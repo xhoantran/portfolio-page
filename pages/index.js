@@ -1,21 +1,23 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styled from "@emotion/styled";
+
+import Header from "../components/Headers";
+
+const ContentContainer = styled.div`
+  margin: 28px 125px 0 125px;
+`;
 
 export default function LandingPage() {
   return (
     <div>
-      <div>
-        <Head>
-          <title>My portfolio</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
+      <Head>
+        <title>My Portfolio</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
 
-        <p>Hello world!</p>
-      </div>
+      <Header />
+
+      <ContentContainer></ContentContainer>
     </div>
   );
 }
