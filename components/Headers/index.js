@@ -2,18 +2,24 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 import MenuIcon from "../Graph/Menu";
 import { useRouter } from "next/router";
+import { BPLarge, BPMedium, BPSmall, BreakPoints } from "../BreakPoints";
 
 const NavWrapper = styled.header`
   position: absolute;
   width: 100%;
   padding: 28px 9rem 0 9rem;
   top: 0;
-  @media (max-width: 1024px) {
+  @media (max-width: ${BPLarge}) {
     padding: 28px 7rem 0 7rem;
   }
-  @media (max-width: 870px) {
+  @media (max-width: ${BPMedium}) {
     padding: 2rem 0;
-    padding: 28px 9rem 0 9rem;
+    padding: 28px 4rem 0 4rem;
+  }
+
+  @media (max-width: ${BPSmall}) {
+    padding: 2rem 0;
+    padding: 28px 3rem 0 3rem;
   }
 `;
 const NavContainer = styled.nav`
@@ -28,7 +34,7 @@ const NavLogo = styled.div`
 const NavOptionMenu = styled.ul`
   display: flex;
   justify-content: space-between;
-  @media (max-width: 664px) {
+  @media (max-width: ${BreakPoints}) {
     display: none;
   }
 `;
@@ -42,10 +48,10 @@ const NavOption = styled.li`
   &:hover {
     background: #f2f2f2;
   }
-  @media (max-width: 1050px) {
+  @media (max-width: ${BPLarge}) {
     margin-right: 1rem;
   }
-  @media (max-width: 870px) {
+  @media (max-width: ${BPMedium}) {
     margin-right: 0.2rem;
   }
 `;
@@ -72,7 +78,7 @@ const NavOptionNavigate = (props) => {
 
 const Menu = styled.div`
   display: none;
-  @media (max-width: 664px) {
+  @media (max-width: ${BreakPoints}) {
     display: block;
     float: right;
     cursor: pointer;
