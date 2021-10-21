@@ -1,29 +1,31 @@
-import Head from "next/head";
 import styled from "@emotion/styled";
-
-import Header from "../Headers";
+import Head from "next/head";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { initLoaded } from "../../redux/action";
 import SVGHome1 from "../Graph/SVGHome1";
+import Header from "../Headers";
 
-const Wrapper = styled.div`
+const ContentWrapper = styled.div`
+  padding-top: 100px;
   margin: 0 5rem;
+  @media (max-width: 1000px) {
+    margin: 0 4rem;
+  }
   @media (max-width: 756px) {
     margin: 0 3rem;
   }
-  @media (max-width: 756px) {
-    margin: 0 1rem;
+  @media (max-width: 450px) {
+    margin: 0 2rem;
   }
-`;
-
-const ContentWrapper = styled.div`
-  margin-top: 180px;
 `;
 
 const ContentContainer = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 const TextContainer = styled.div`
-  margin-left: 4rem;
   max-width: 480px;
 `;
 
@@ -47,31 +49,40 @@ const GraphContainer = styled.div`
 `;
 
 export default function HomePage() {
+  const isInitLoading = useSelector((state) => state.global.isInitLoading);
+  const dispath = useDispatch();
+
+  useEffect(() => {
+    dispath(initLoaded());
+  }, []);
+
   return (
     <>
       <Head>
         <title>My Portfolio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Wrapper>
-        <Header />
-        <ContentWrapper>
-          <ContentContainer>
-            <TextContainer>
-              <AttractText>Hoan Tran</AttractText>
-              <AttractText>Software Engineer</AttractText>
-              <AttractText>AI Engineer</AttractText>
-              <SmallAttractText>
-                Welcome to my portfolio! I am an enginner that use my skills to
-                solve problem <StrongText>efficiency</StrongText>
-              </SmallAttractText>
-            </TextContainer>
-            <GraphContainer>
-              <SVGHome1 />
-            </GraphContainer>
-          </ContentContainer>
-        </ContentWrapper>
-      </Wrapper>
+      {!isInitLoading && (
+        <>
+          <Header />
+          <ContentWrapper>
+            <ContentContainer>
+              <TextContainer>
+                <AttractText>Hoan Tran</AttractText>
+                <AttractText>Software Engineer</AttractText>
+                <AttractText>AI Engineer</AttractText>
+                <SmallAttractText>
+                  Welcome to my portfolio! I am an enginner that use my skills
+                  to solve problem <StrongText>efficiency</StrongText>
+                </SmallAttractText>
+              </TextContainer>
+              <GraphContainer>
+                <SVGHome1 />
+              </GraphContainer>
+            </ContentContainer>
+          </ContentWrapper>
+        </>
+      )}
     </>
   );
 }

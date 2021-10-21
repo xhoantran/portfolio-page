@@ -4,7 +4,19 @@ import MenuIcon from "../Graph/Menu";
 import { useRouter } from "next/router";
 
 const NavWrapper = styled.header`
-  padding-top: 28px;
+  position: absolute;
+  width: 100%;
+  padding: 28px 9rem 0 9rem;
+  top: 0;
+
+  @media (max-width: 1024px) {
+    padding: 28px 7rem 0 7rem;
+  }
+
+  @media (max-width: 870px) {
+    padding: 2rem 0;
+    padding: 28px 9rem 0 9rem;
+  }
 `;
 
 const NavContainer = styled.nav`
@@ -19,26 +31,26 @@ const NavLogo = styled.div`
 const NavOptionMenu = styled.ul`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 664px) {
+    display: none;
+  }
 `;
 
 const NavOption = styled.li`
   list-style: none;
   font-size: 1rem;
-  margin-left: 2rem;
+  margin-right: 2rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 30px;
   &:hover {
     background: #f2f2f2;
   }
-  @media (max-width: 1000px) {
-    margin-left: 2rem;
+  @media (max-width: 1050px) {
+    margin-right: 1rem;
   }
-  @media (max-width: 850px) {
-    margin-left: 1rem;
-  }
-  @media (max-width: 756px) {
-    display: none;
+  @media (max-width: 870px) {
+    margin-right: 0.2rem;
   }
 `;
 const NavOptionLink = styled.a`
@@ -64,7 +76,7 @@ const NavOptionNavigate = (props) => {
 
 const Menu = styled.div`
   display: none;
-  @media (max-width: 756px) {
+  @media (max-width: 664px) {
     display: block;
     float: right;
     cursor: pointer;
@@ -76,34 +88,24 @@ const ContactMeButton = styled.a`
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  margin-right: 4rem;
   background: #001219;
   border-radius: 50px;
   width: 150px;
   height: 42px;
   color: #fff;
-  @media (max-width: 1000px) {
-    margin-right: 2rem;
-  }
-  @media (max-width: 850px) {
-    margin-right: 1rem;
-  }
-  @media (max-width: 756px) {
-    display: none;
-  }
 `;
 
 function Header() {
   return (
     <NavWrapper>
       <NavContainer>
-        <NavLogo>Hoan Tran</NavLogo>
+        <NavLogo>HOAN TR</NavLogo>
         <NavOptionMenu>
           <NavOptionNavigate text="Home" onClickGoTo="/" />
           <NavOptionNavigate text="About" onClickGoTo="/about" />
           <NavOptionNavigate text="Products" onClickGoTo="/products" />
+          <ContactMeButton>Contact me</ContactMeButton>
         </NavOptionMenu>
-        <ContactMeButton>Contact me</ContactMeButton>
         <Menu>
           <MenuIcon />
         </Menu>
