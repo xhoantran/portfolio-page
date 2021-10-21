@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { Provider } from "react-redux";
 import { useStore } from "../redux/store";
 import "../styles/globals.css";
-import "../styles/InitLoading.css";
+import "../styles/initLoading.css";
 import "nprogress/nprogress.css";
 
 const TopProgressBar = dynamic(
