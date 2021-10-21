@@ -25,7 +25,7 @@ const ContentWrapper = styled.div`
   }
   @media (max-width: ${BPSmall}) {
     margin: 0 3rem;
-    padding-top: 160px;
+    padding-top: 100px;
   }
 `;
 const ContentContainer = styled.div`
