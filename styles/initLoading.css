@@ -30,8 +30,8 @@
   animation: line-anim 2s ease forwards 0.9s, line-gap 0s forwards 2.9s;
 }
 #logo path:nth-child(5) {
-  stroke-dasharray: 248;
-  stroke-dashoffset: 248;
+  stroke-dasharray: 249;
+  stroke-dashoffset: 249;
   animation: line-anim 2s ease forwards 1s, line-gap 0s forwards 3s;
 }
 #logo path:nth-child(6) {
