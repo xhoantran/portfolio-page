@@ -19,31 +19,25 @@ const ContentWrapper = styled.div`
     margin: 0 2rem;
   }
 `;
-
 const ContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
 const TextContainer = styled.div`
   max-width: 480px;
 `;
-
 const AttractText = styled.div`
   font-weigth: 500;
   font-size: 36px;
 `;
-
 const SmallAttractText = styled.div`
   font-weight: 400;
   font-size: 18px;
 `;
-
 const StrongText = styled.div`
   display: inline-block;
   font-weight: bold;
 `;
-
 const GraphContainer = styled.div`
   overflow: hidden;
 `;

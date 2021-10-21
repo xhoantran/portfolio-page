@@ -8,11 +8,9 @@ const NavWrapper = styled.header`
   width: 100%;
   padding: 28px 9rem 0 9rem;
   top: 0;
-
   @media (max-width: 1024px) {
     padding: 28px 7rem 0 7rem;
   }
-
   @media (max-width: 870px) {
     padding: 2rem 0;
     padding: 28px 9rem 0 9rem;

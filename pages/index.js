@@ -8,7 +8,6 @@ export default function LandingPage() {
   return (
     <>
       <InitLoading />
-
       <HomePage />
     </>
   );
