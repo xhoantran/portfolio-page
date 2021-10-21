@@ -18,7 +18,6 @@ const NavWrapper = styled.header`
     padding: 28px 9rem 0 9rem;
   }
 `;
-
 const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -35,7 +34,6 @@ const NavOptionMenu = styled.ul`
     display: none;
   }
 `;
-
 const NavOption = styled.li`
   list-style: none;
   font-size: 1rem;
