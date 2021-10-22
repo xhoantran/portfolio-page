@@ -3,8 +3,6 @@ import Head from "next/head";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initLoaded } from "../../redux/action";
-import SVGHome1 from "../Graph/SVGHome1";
-import Header from "../Headers";
 import {
   BPLarge,
   BPMedium,
@@ -12,6 +10,9 @@ import {
   BPSmall,
   BreakPoints,
 } from "../BreakPoints";
+import SVGHome1 from "../Graph/SVGHome1";
+import Header from "../Headers";
+import Link from "next/link";
 
 const ContentWrapper = styled.div`
   padding-top: 200px;
@@ -89,20 +90,17 @@ const GraphContainer = styled.div`
 `;
 
 const ContactMeButton = styled.a`
-  display: none;
-
-  @media (max-width: ${BPMiddle}) {
-    margin-top: 20px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    background: #001219;
-    border-radius: 50px;
-    width: 150px;
-    height: 42px;
-    color: #fff;
-  }
+  margin-top: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  background: #001219;
+  border-radius: 50px;
+  width: 150px;
+  height: 42px;
+  color: #ffffff;
+  cursor: pointer;
 `;
 
 export default function HomePage() {
@@ -110,7 +108,7 @@ export default function HomePage() {
   const dispath = useDispatch();
 
   useEffect(() => {
-    dispath(initLoaded());
+    if (isInitLoading) dispath(initLoaded());
   }, []);
 
   return (
@@ -132,7 +130,9 @@ export default function HomePage() {
                   Welcome to my portfolio! I am an enginner that use my skills
                   to solve problem <StrongText>efficiency</StrongText>
                 </SmallAttractText>
-                <ContactMeButton>Contact me</ContactMeButton>
+                <Link href="/contact">
+                  <ContactMeButton>Contact me</ContactMeButton>
+                </Link>
               </TextContainer>
               <GraphContainer>
                 <SVGHome1 />

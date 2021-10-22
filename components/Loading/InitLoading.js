@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const MobileLogo = dynamic(() =>
-  import("../Graph/LoadingLogo").then((mod) => mod.MobileLogo)
+  import("../Graph/Loading").then((mod) => mod.MobileLogo)
 );
 const DesktopLogo = dynamic(() =>
-  import("../Graph/LoadingLogo").then((mod) => mod.DesktopLogo)
+  import("../Graph/Loading").then((mod) => mod.DesktopLogo)
 );
 const BackgroundLogo = styled.div`
   background: #001219;
@@ -18,9 +18,9 @@ const BackgroundLogo = styled.div`
 `;
 
 export default function InitLoading() {
-  const [visible, setVisible] = useState(true);
-  const [windowWidth, setWindowWidth] = useState(0);
   const isInitLoading = useSelector((state) => state.global.isInitLoading);
+  const [visible, setVisible] = useState(isInitLoading);
+  const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => {
     if (typeof window !== undefined) {
       setWindowWidth(window.innerWidth);

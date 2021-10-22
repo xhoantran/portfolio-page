@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
-import MenuIcon from "../Graph/Menu";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { BPLarge, BPMedium, BPSmall, BreakPoints } from "../BreakPoints";
+import MenuIcon from "../Graph/Menu";
+import ArrorRight from "../Graph/ArrowRight";
 
 const NavWrapper = styled.header`
   position: absolute;
@@ -13,12 +15,9 @@ const NavWrapper = styled.header`
     padding: 28px 7rem 0 7rem;
   }
   @media (max-width: ${BPMedium}) {
-    padding: 2rem 0;
     padding: 28px 4rem 0 4rem;
   }
-
   @media (max-width: ${BPSmall}) {
-    padding: 2rem 0;
     padding: 28px 3rem 0 3rem;
   }
 `;
@@ -34,8 +33,33 @@ const NavLogo = styled.div`
 const NavOptionMenu = styled.ul`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   @media (max-width: ${BreakPoints}) {
-    display: none;
+    position: fixed;
+    right: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    padding: 3rem 0;
+  }
+  &.active {
+    right: 0;
+  }
+`;
+const NavOverlay = styled.div`
+  position: absolute;
+  top: 5rem;
+  right: -100%;
+  width: 100%;
+  height: calc(100vh - 5rem);
+  background-color: #fff;
+  transition: 0.3s;
+  &.active {
+    right: 0;
   }
 `;
 const NavOption = styled.li`
@@ -53,6 +77,9 @@ const NavOption = styled.li`
   }
   @media (max-width: ${BPMedium}) {
     margin-right: 0.2rem;
+  }
+  @media (max-width: ${BreakPoints}) {
+    margin: 1rem 0;
   }
 `;
 const NavOptionLink = styled.a`
@@ -76,7 +103,7 @@ const NavOptionNavigate = (props) => {
   );
 };
 
-const Menu = styled.div`
+const MenuToggle = styled.div`
   display: none;
   @media (max-width: ${BreakPoints}) {
     display: block;
@@ -95,22 +122,31 @@ const ContactMeButton = styled.a`
   width: 150px;
   height: 42px;
   color: #fff;
+  cursor: pointer;
+
+  @media (max-width: ${BreakPoints}) {
+    margin: 1rem 0;
+  }
 `;
 
 function Header() {
+  const [menuActive, setMenuActive] = useState(false);
   return (
     <NavWrapper>
+      <NavOverlay className={menuActive ? "active" : null} />
       <NavContainer>
         <NavLogo>HOAN TR</NavLogo>
-        <NavOptionMenu>
+        <NavOptionMenu className={menuActive ? "active" : null}>
           <NavOptionNavigate text="Home" onClickGoTo="/" />
           <NavOptionNavigate text="About" onClickGoTo="/about" />
           <NavOptionNavigate text="Products" onClickGoTo="/products" />
-          <ContactMeButton>Contact me</ContactMeButton>
+          <Link href="/contact">
+            <ContactMeButton>Contact me</ContactMeButton>
+          </Link>
         </NavOptionMenu>
-        <Menu>
-          <MenuIcon />
-        </Menu>
+        <MenuToggle onClick={() => setMenuActive(!menuActive)}>
+          {menuActive ? <ArrorRight /> : <MenuIcon />}
+        </MenuToggle>
       </NavContainer>
     </NavWrapper>
   );
