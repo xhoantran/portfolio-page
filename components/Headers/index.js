@@ -58,7 +58,9 @@ const NavOverlay = styled.div`
   height: calc(100vh - 5rem);
   background-color: #fff;
   transition: 0.3s;
+  display: none;
   &.active {
+    display: block;
     right: 0;
   }
 `;
